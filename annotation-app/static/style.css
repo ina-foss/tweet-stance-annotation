@@ -1,0 +1,260 @@
+body {
+	font-family: "DejaVu Sans";
+}
+
+form {
+	padding: 0;
+	width: 70%;
+	margin: auto;
+}
+
+ul {
+	list-style: none;
+	margin: 0;
+}
+
+li {
+	margin: .5em 0;
+}
+
+li > div {
+	display: flex;
+    align-items: center;
+}
+
+.tweet {
+	flex-grow: 1;
+	padding: .5em;
+	background-color: #c5def6;
+	display: flex;
+	flex-direction: column;
+}
+
+.tweet .user {
+	font-weight: bold;
+}
+
+.tweet .meta {
+	align-self: flex-end;
+	margin-top: auto;
+}
+
+.annotation {
+	width: 15em;
+	min-width: 15em;
+	margin-left: 2em;
+	display: flex;
+}
+
+.annotation div {
+	padding: .5em;
+	text-align: center;
+}
+
+.radios {
+    margin-bottom: 1em;
+}
+
+.tweet_text {
+    font-size: 22px;
+    font-family: "DejaVu Sans";
+}
+
+.tweet .images {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tweet .images a {
+    margin: .5em;
+}
+.tweet .images img {
+    max-height: 10em;
+    max-width: 15em;
+}
+.tweet .images img:hover {
+    transform: scale(2.5);
+}
+
+.meta a {
+	color: black;
+}
+
+q {
+    padding-left: 6em;
+    font-style: italic;
+}
+
+
+.quote_select {
+    background-color: #f4f4ff;
+}
+
+
+.tweet {
+    background-color: #f4f4ff;
+    border-radius: 6px;
+    border: solid gray 1px;
+}
+
+ul > li > ul > li > div > .tweet {
+    background-color: #cefcff;
+}
+
+ul > li > ul > li > ul > li > div > .tweet {
+    background-color: #fff7bf;
+}
+
+ul > li > ul > li > ul > li > ul > li > div > .tweet {
+    background-color: #ffd5bf;
+}
+
+
+
+.prev_select {
+    visibility: visible;
+}
+
+
+ul > li > ul > li > div > div > .src_select {
+    background-color: #dfdfff;
+    visibility: visible;
+}
+
+
+ul > li > ul > li > div > div > .prev_select {
+    background-color: #f4f4ff;
+    visibility: visible;
+
+}
+
+ul > li > ul > li > ul > li > div > div > .prev_select {
+    background-color: #cefcff;
+    visibility: visible;
+
+}
+
+ul > li > ul > li > ul > li > ul > li > div > div > .prev_select {
+    background-color: #fff7bf;
+    visibility: visible;
+}
+
+ul > li > ul > li > ul > li > ul > li > ul > li > div > div > .prev_select {
+    background-color: #ffd5bf;
+    visibility: visible;
+}
+
+.footer {
+	text-align: center;
+}
+
+.firsttweet{
+    list-style: none;
+    margin: 0;
+    display: flex;
+    background-color: #dfdfff;
+    border-radius: 8px;
+    border: solid gray 1px;
+
+    position: sticky; top: 0px;
+
+}
+
+.firsttweet > .tweet{
+    background-color: #dfdfff;
+    border: 0;
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 70%;
+}
+
+
+.src_select_first {
+    visibility: hidden;
+}
+
+.prev_select_first {
+    visibility: hidden;
+}
+
+
+select {
+    font-size: 18px;
+    overflow-y: auto;
+    border-radius: 6px;
+    /*margin: 0px -10px 0px 0px;*/
+    border: solid gray 1px;
+    margin-left: .3em;
+}
+
+
+.buttongreen {
+    transition-duration: 0.4s;
+    background-color: white;
+    color: black;
+    border: 2px solid #4CAF50; /* Green */
+    border-radius: 8px;
+    font-size: 18px;
+}
+
+.buttongreen:hover {
+    background-color: #4CAF50; /* Green */
+    color: white;
+}
+
+
+.buttonred {
+    transition-duration: 0.4s;
+    background-color: white;
+    color: black;
+    border: 2px solid #af1924; /* Green */
+    border-radius: 8px;
+    font-size: 16px;
+
+}
+
+.buttonred:hover {
+    background-color: #af1924; /* Green */
+    color: white;
+}
+
+
+.hashtag {
+    color: dodgerblue;
+}
+
+.mention {
+    color: cornflowerblue;
+}
+
+.inReplyTo {
+    font-style: italic;
+    padding-left: 3em;
+}
+
+.set_number {
+    height: 1.2em;
+    position: fixed;
+    width: 13%;
+    background-color: gainsboro;
+    border-radius: 8px;
+}
+
+.set_number:before {
+    content: attr(data-label);
+    position:absolute;
+    left:0;
+    right:0;
+    text-align: center;
+}
+
+.set_number .progressbar {
+    background-color: #4CAF50;
+    border-radius: 6px;
+    /*text-align: center;*/
+    display: inline-block;
+    height: 100%
+}

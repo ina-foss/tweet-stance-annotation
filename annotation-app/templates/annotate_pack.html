@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Annotation d'un paquet de tweets</title>
+    <link rel="stylesheet" href="/static/style.css"/>
+</head>
+<body>
+
+    <p style="text-align: center">Connecté en tant que <b>{{ username }}</b></p>
+
+    Jeu <b>{{ pack.set_nb + 1}}</b>
+    <div class="set_number" data-label="{{ pack.pos }} / {{ pack.set_size }}">
+        <span class="progressbar" style="width:{{ (pack.pos / pack.set_size) * 100}}%;"></span>
+      </div><br>
+
+    <form action="/annotate/set/{{ pack.set_nb }}/pack/{{ pack.pos }}" method = "post">
+
+            {% set tweet = tweets[0] %}
+
+
+            <div class="firsttweet">
+                <div class="tweet">
+                    <span class="user">{{ tweet.user }}</span>
+                    <p>
+                        {% if tweet.quoting %}
+                            <span class="quoting">⇯{{ tweet.text|safe }}</span>
+                        {%  else %}
+                            {{ tweet.text|safe }}
+                        {% endif %}
+                    </p>
+                    <div class="images">
+                            {% for image in tweet.images %}
+                                <a target="_blank" href="{{ image }}"> <img src="{{ image }}" class="image"/></a>
+                            {% endfor %}
+                    </div>
+                    <span class="meta">id: <a target="_blank" href="https://twitter.com/{{ tweet.user }}/status/{{ tweet.id }}">{{ tweet.id }}</a></span>
+
+                </div>
+                <select name="tweet_annotation_prev" size="4" class="prev_select_first">
+                    <option hidden disabled selected value> - </option>
+                </select>
+                <select name="tweet_annotation_src" size="4" class="src_select_first">
+                    <option hidden disabled selected value> - </option>
+                </select>
+            </div>
+            <div class="hidden_placeholder"></div>
+            <input type="hidden" name="tweet_id" value="{{ tweet.id }}">
+
+        <div>
+            <ul>
+                {%- for tweet in tweets recursive %}
+                <li>
+                 {% if tweet != tweets[0] %}
+                    <div>
+                        <div class="tweet">
+                            <span class="user">{{ tweet.user }}</span>
+                            <p>
+                                {% if tweet.quoting %}
+                                    <span class="quoting">{{ tweet.text|safe }}</span><br/><br/>
+                                        <q>{{ ' '.join(tweet.quoting.split(' ')[:3]) }} [...] {{ ' '.join(tweet.quoting.split(' ')[-3:]) }}</q>
+                                {%  else %}
+                                    {{ tweet.text|safe }}
+                                {% endif %}
+
+                            </p>
+                            <div class="images">
+                                    {% for image in tweet.images %}
+                                        <a target="_blank" href="{{ image }}"> <img src="{{ image }}" class="image"/></a>
+                                    {% endfor %}
+                            </div>
+                            <span class="meta">id: <a target="_blank" href="https://twitter.com/{{ tweet.user }}/status/{{ tweet.id }}">{{ tweet.id }}</a></span>
+                        </div>
+                        <div class="select">
+                           {% if tweet.replies_to == tweets[0].id or tweet.quoting_id == tweets[0].id %}
+                                <select name="tweet_annotation_prev" size="5" class="prev_select" style="visibility: hidden">
+                            {% else %}
+                                <select name="tweet_annotation_prev" size="5" class="prev_select">
+                            {% endif %}
+                                <option selected value="-1">🗑️ Ignorer</option>
+                                <option value="0">✅ Soutient</option>
+                                <option value="1">❌ Contredit</option>
+                                <option value="2">❓ Questionne</option>
+                                <option value="3">💬 Commente</option>
+                            </select>
+                        </div>
+                        <div class="select">
+                            <select name="tweet_annotation_src" size="5" class="src_select">
+                                <option selected value="-1">🗑️ Ignorer</option>
+                                <option value="0">✅ Soutient</option>
+                                <option value="1">❌ Contredit</option>
+                                <option value="2">❓ Questionne</option>
+                                <option value="3">💬 Commente</option>
+                            </select>
+                        </div>
+                    </div>
+                    <input type="hidden" name="tweet_id" value="{{ tweet.id }}">
+                    {% endif %}
+                    <ul>
+                        {{ loop(tweet.replies) }}
+                    </ul>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="footer">
+            <button type="submit" name="annotation" value="1" class="buttongreen">Intéressant</button>
+            <button type="submit" name="annotation" value="0" class="buttonred">Pas intéressant</button>
+        </div>
+    </form>
+
+</body>
+</html>
