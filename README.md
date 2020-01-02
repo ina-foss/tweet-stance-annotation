@@ -20,7 +20,7 @@ and the software tools to build it and to perform these analyses will be availab
 
 ## Tools
 ### Web-based application for tweet stance annotation
-Web-based application developed under flask allowing for the annotation of tweet stance. Two level
-of annotation is offered, the stance of the target tweet toward the tweet it responds to, or
+Web-based application developed under flask allowing for the annotation of tweet stance. Two levels
+of annotation are offered, the stance of the target tweet toward the tweet it responds to, and
 toward the root tweet of the thread. The database (not provided - for Twitter privacy policy reason)
 is in the .sqlite format.
