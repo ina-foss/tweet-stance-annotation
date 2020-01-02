@@ -17,3 +17,10 @@ You can find more info about the Event2018 dataset here: https://github.com/ina-
 
 Some results of this Tweets Stance corpus analysis 
 and the software tools to build it and to perform these analyses will be available in the coming days.
+
+## Tools
+### Web-based application for tweet stance annotation
+Web-based application developed under flask allowing for the annotation of tweet stance. Two level
+of annotation is offered, the stance of the target tweet toward the tweet it responds to, or
+toward the root tweet of the thread. The database (not provided - for Twitter privacy policy reason)
+is in the .sqlite format.
