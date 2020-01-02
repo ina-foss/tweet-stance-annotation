@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Web-based application for tweet stance annotation
-=================================================
+Web-based application for tweet stance annotation (library)
+===========================================================
 Web-based application developed under flask allowing for the annotation of tweet stance. Two level
 of annotation is offered, the stance of the target tweet toward the tweet it responds to, or
 toward the root tweet of the thread. The database (not provided - for Twitter privacy policy reason)
