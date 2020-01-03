@@ -21,6 +21,8 @@ Rémi Uro     <ruro@ina.fr>
 
 License
 -------
+The MIT License
+
 Copyright 2019 INA (Rémi Uro and Marc Evrard - http://www.ina.fr/)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
